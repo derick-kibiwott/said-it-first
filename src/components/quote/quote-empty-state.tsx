@@ -1,4 +1,4 @@
-import { ArrowUpRightIcon, Plus, Quote } from "lucide-react";
+import { Plus, Quote } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {

@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import type { Quote } from "@/app/page";
+import { ApiResponse, Quote } from "@/types/common";
 import { Button } from "@/components/ui/button";
 import { EditQuoteDialog } from "@/components/dialogs/edit-quote-dialog";
 import { Pencil, Trash2 } from "lucide-react";
@@ -30,7 +30,7 @@ import { UpdateProps } from "../quote-list";
 interface QuoteCardProps {
   quote: Quote;
   onUpdate: ({ id, quote, author }: UpdateProps) => void;
-  onDelete: UseMutateFunction<any, Error, number, unknown>;
+  onDelete: UseMutateFunction<ApiResponse<Quote>, Error, number, unknown>;
 }
 
 export function QuoteCard({ quote, onUpdate, onDelete }: QuoteCardProps) {

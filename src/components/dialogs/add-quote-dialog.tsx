@@ -17,14 +17,15 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { UseMutateFunction } from "@tanstack/react-query";
 import { Save } from "lucide-react";
-type Quote = {
-  author: string;
+import { ApiResponse, Quote } from "@/types/common";
+export type AddQuote = {
   quote: string;
+  author: string;
 };
 interface AddQuoteDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  onAdd: UseMutateFunction<any, Error, Quote, unknown>;
+  onAdd: UseMutateFunction<ApiResponse<Quote>, Error, AddQuote, unknown>;
   status: "success" | "pending" | "error" | "idle";
 }
 
@@ -60,8 +61,8 @@ export function AddQuoteDialog({
         <DialogHeader>
           <DialogTitle>Add New Quote</DialogTitle>
           <DialogDescription>
-            Capture a memorable quote and its author. Click save when you're
-            done.
+            Capture a memorable quote and its author. Click save when
+            you&apos;re done.
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit}>

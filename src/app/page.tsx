@@ -16,7 +16,7 @@ export default function Home() {
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
 
   //Defining the mutations that are going to be used
-  const { data, fetchStatus, isPaused, status, error } = useQuotesQuery();
+  const { data, isPaused, status, error } = useQuotesQuery();
   const addMutation = useAddQuoteMutation();
   const updateMutation = useUpdateQuoteMutation();
   const deleteMutation = useDeleteQuoteMutation();

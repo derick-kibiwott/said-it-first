@@ -19,7 +19,7 @@ export function useAddQuoteMutation() {
   const queryClient = useQueryClient();
 
   return useMutation<
-    any, //Mutation result type
+    ApiResponse<Quote>, //mutation result type (server response)
     Error, //Mutation error type
     { quote: string; author: string }, //Variables type
     { previousQuotes?: ApiResponse<Quote[]>; tempQuote: Quote }
@@ -68,6 +68,10 @@ export function useAddQuoteMutation() {
         const filtered = old.data.filter(
           (q) => q.id !== onMutateResult?.tempQuote.id
         );
+        // Only add if newQuote.data is not null
+        if (!newQuote.data) {
+          return old;
+        }
         // Add the real quote from the server
         return {
           ...old,
@@ -85,7 +89,7 @@ export function useAddQuoteMutation() {
 export function useUpdateQuoteMutation() {
   const queryClient = useQueryClient();
   return useMutation<
-    any,
+    ApiResponse<Quote>,
     Error,
     { id: number; quote: string; author: string },
     { previousQuotes?: ApiResponse<Quote[]> }
@@ -130,7 +134,7 @@ export function useUpdateQuoteMutation() {
 export function useDeleteQuoteMutation() {
   const queryClient = useQueryClient();
   return useMutation<
-    any,
+    ApiResponse<Quote>,
     Error,
     number,
     { previousQuotes?: ApiResponse<Quote[]> }

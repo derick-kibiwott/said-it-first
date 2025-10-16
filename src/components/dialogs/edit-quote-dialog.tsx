@@ -3,7 +3,7 @@
 import type React from "react";
 
 import { useState, useEffect } from "react";
-import type { Quote } from "@/app/page";
+import { Quote } from "@/types/common";
 import {
   Dialog,
   DialogContent,
@@ -58,7 +58,7 @@ export function EditQuoteDialog({
         <DialogHeader>
           <DialogTitle>Edit Quote</DialogTitle>
           <DialogDescription>
-            Make changes to your quote. Click save when you're done.
+            Make changes to your quote. Click save when you&apos;re done.
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit}>

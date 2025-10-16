@@ -1,6 +1,6 @@
 "use client";
 
-import type { Quote } from "@/app/page";
+import { ApiResponse, Quote } from "@/types/common";
 import { QuoteCard } from "@/components/quote/quote-card";
 import { QuoteListSkeleton } from "./skeletons/quote-list";
 import { QuotesErrorState } from "./quote/quote-error-state";
@@ -17,7 +17,7 @@ export type UpdateProps = {
 type QuoteListProps = {
   quotes: Quote[];
   onUpdate: ({ id, quote, author }: UpdateProps) => void;
-  onDelete: UseMutateFunction<any, Error, number, unknown>;
+  onDelete: UseMutateFunction<ApiResponse<Quote>, Error, number, unknown>;
   status: "success" | "pending" | "error";
   error?: AxiosError<{ message: string; success: boolean; data: null }>;
 } & NavbarProps;
