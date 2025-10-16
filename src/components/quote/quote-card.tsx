@@ -39,10 +39,13 @@ export function QuoteCard({ quote, onUpdate, onDelete }: QuoteCardProps) {
 
   return (
     <>
-      <Item variant="outline" className="hover:shadow-md transition-shadow">
+      <Item
+        variant="outline"
+        className="flex-col max-sm:items-start md:flex-row hover:shadow-md transition-shadow"
+      >
         <ItemContent>
           <ItemTitle className="text-lg mb-2 flex items-start gap-3">
-            <span className="flex items-center justify-center size-10 font-md font-bold rounded-full bg-accent text-accent-foreground">
+            <span className="flex items-center justify-center size-10 font-bold rounded-full bg-accent text-accent-foreground">
               {getInitials(quote.author ?? "")}
             </span>
             <span className="flex-1 text-pretty">
@@ -55,7 +58,6 @@ export function QuoteCard({ quote, onUpdate, onDelete }: QuoteCardProps) {
             </ItemDescription>
           )}
         </ItemContent>
-
         <ItemActions className="flex gap-2">
           <Button size="sm" asChild>
             <Link href={`/quote/${quote.id}`}>Details</Link>
